@@ -2,6 +2,27 @@ import React, {useState, useEffect} from "react";
 import Apod from "./components/ApodComponent/Apod";
 import axios from "axios";
 import "./App.css";
+import {TopTitle} from "./components/ApodComponent/Apod";
+import styled from "styled-components";
+
+/* styled-components */
+const Nav = styled.nav `
+  margin-top: 50px;
+  margin-bottom: 100px;
+  display:flex;
+  justify-content: space-evenly;
+`;
+
+const Links = styled.a `
+  color: black;
+  font-weight: bold;
+  text-decoration: none;
+`;
+
+const BottomLink = styled(Links) `
+  margin-bottom: 75px;
+`;
+/* End of styled-components */
 
 function App() {
 
@@ -12,7 +33,6 @@ function App() {
       .then (response => {
         console.log(response.data);
         setAstroData(response.data);
-        //console.log(astroData);
       })
       .catch (error => {
         console.log("You Did NOT Receive Data", error);
@@ -22,18 +42,25 @@ function App() {
 
   return (
     <div className="App">
-      <h1 className="Top-Title">
-        The National Aeronatical and Space Administration Presents:
-      </h1>
+      <Nav>
+        <Links href="./index.html">Home</Links>
+        <Links href="">About</Links>
+        <Links href="">Photos</Links>
+        <Links href="">Blog</Links>
+      </Nav>
+      <TopTitle>
+        The National Aeronautical and Space Administration Presents:
+      </TopTitle>
       <div>
-            <Apod
-              title={astroData.title}
-              date={astroData.date}
-              copyright={astroData.copyright}
-              image={astroData.url}
-              explain={astroData.explanation}
-            />
+        <Apod
+          title={astroData.title}
+          date={astroData.date}
+          copyright={astroData.copyright}
+          image={astroData.url}
+          explain={astroData.explanation}
+        />
       </div>
+      <BottomLink href="./index.html">Back to Top</BottomLink>
     </div>
   );
 }

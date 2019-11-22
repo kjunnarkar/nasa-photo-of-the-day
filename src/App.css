@@ -36,6 +36,9 @@ body {
     transform: rotate(360deg);
   }
 }
+
+/* Moved these styles to the Component Apod.js for the styled-components project */
+/*
 .Top-Title {
   margin-top: 50px;
 }
@@ -60,3 +63,4 @@ body {
 .explain {
   margin: 50px 125px 75px 125px;
 }
+*/
